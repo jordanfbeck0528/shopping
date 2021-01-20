@@ -55,20 +55,20 @@ class Market
     all_items.map(&:name).sort
   end
 
-  def sell(item, quantity)
-    left_to_sell = []
-    vendors_that_sell(item).each do |vendor|
-      vendor.inventory.each do |inventory, vendor_quantity|
-        false if quantity - quantity_of_item(item) < 0
-        true if (vendor_quantity - quantity) > 0
-        if (quantity - vendor_quantity) < 0
-          left_to_sell << (quantity - vendor_quantity).abs
-          vendor_quantity = 0
-        elsif (left_to_sell.last.nil? && left_to_sell.last - vendor_quantity) > 0
-          vendor_quantity - left_to_sell.last
-          vendor_quantity -= left_to_sell.last
-        end
-      end
-    end
-  end
+  # def sell(item, quantity)
+  #   left_to_sell = []
+  #   vendors_that_sell(item).each do |vendor|
+  #     vendor.inventory.each do |inventory, vendor_quantity|
+  #       false if quantity - quantity_of_item(item) < 0
+  #       true if (vendor_quantity - quantity) > 0
+  #       if (quantity - vendor_quantity) < 0
+  #         left_to_sell << (quantity - vendor_quantity).abs
+  #         vendor_quantity = 0
+  #       elsif (left_to_sell.last.nil? && left_to_sell.last - vendor_quantity) > 0
+  #         vendor_quantity - left_to_sell.last
+  #         vendor_quantity -= left_to_sell.last
+  #       end
+  #     end
+  #   end
+  # end
 end
